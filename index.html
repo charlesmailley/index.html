@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariage Charles &amp; Camille · 18 Juillet 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold:       #c9a96e;
+      --gold-light: #e8d5b0;
+      --gold-pale:  #f7f0e4;
+      --gold-dim:   rgba(201,169,110,.18);
+      --black:      #000000;
+      --dark1:      #0a0a0a;
+      --dark2:      #111111;
+      --dark3:      #181818;
+      --cream:      #faf8f3;
+      --warm-white: #fffdf9;
+      --text-dark:  #3a3028;
+      --text-mid:   #6b5c4e;
+      --text-light: #9e8e82;
+      --border:     #e4d8c8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--black);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* ═══════════════════════════════════════
+       HERO — fond pur noir
+    ═══════════════════════════════════════ */
+    .hero {
+      background: var(--black);
+      text-align: center;
+      padding: 90px 24px 72px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Particules bokeh ── */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .p {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      filter: blur(2px);
+      opacity: 0;
+      animation: float linear infinite;
+    }
+    .p:nth-child(1)  { width:4px;  height:4px;  left:10%; animation-duration:14s; animation-delay:0s;    opacity:.55; }
+    .p:nth-child(2)  { width:6px;  height:6px;  left:25%; animation-duration:18s; animation-delay:2s;    opacity:.35; }
+    .p:nth-child(3)  { width:3px;  height:3px;  left:40%; animation-duration:12s; animation-delay:4s;    opacity:.6;  }
+    .p:nth-child(4)  { width:5px;  height:5px;  left:55%; animation-duration:16s; animation-delay:1s;    opacity:.4;  }
+    .p:nth-child(5)  { width:7px;  height:7px;  left:70%; animation-duration:20s; animation-delay:3s;    opacity:.28; }
+    .p:nth-child(6)  { width:4px;  height:4px;  left:85%; animation-duration:13s; animation-delay:6s;    opacity:.5;  }
+    .p:nth-child(7)  { width:3px;  height:3px;  left:18%; animation-duration:15s; animation-delay:8s;    opacity:.45; }
+    .p:nth-child(8)  { width:5px;  height:5px;  left:62%; animation-duration:17s; animation-delay:5s;    opacity:.38; }
+    .p:nth-child(9)  { width:6px;  height:6px;  left:78%; animation-duration:11s; animation-delay:7s;    opacity:.32; }
+    .p:nth-child(10) { width:4px;  height:4px;  left:33%; animation-duration:19s; animation-delay:9s;    opacity:.5;  }
+
+    @keyframes float {
+      0%   { transform: translateY(110vh) scale(.8); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+    }
+
+    /* ── Cercle déco derrière les noms ── */
+    .hero-ring {
+      position: absolute;
+      width: min(60vw, 480px);
+      height: min(60vw, 480px);
+      border-radius: 50%;
+      border: 1px solid var(--gold-dim);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-ring::before {
+      content: '';
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,.08);
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-label {
+      font-weight: 300;
+      font-size: .72rem;
+      letter-spacing: .55em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-names {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(2.8rem, 9vw, 5.6rem);
+      line-height: 1;
+      color: #fff;
+    }
+    .hero-amp {
+      display: block;
+      font-style: italic;
+      color: var(--gold);
+      font-size: clamp(3.2rem, 11vw, 6.4rem);
+      line-height: .85;
+      margin: .06em 0;
+    }
+    .hero-rule {
+      width: 180px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 30px auto;
+    }
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      letter-spacing: .38em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .hero-place {
+      font-size: .78rem;
+      color: rgba(255,255,255,.35);
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    /* ── Compte à rebours ── */
+    .countdown {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .cd-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 64px;
+    }
+    .cd-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1;
+    }
+    .cd-sep {
+      font-size: 2rem;
+      color: var(--gold);
+      line-height: 1;
+      padding-top: 2px;
+    }
+    .cd-label {
+      font-size: .62rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+      margin-top: 5px;
+      font-weight: 300;
+    }
+
+    .programme {
+      display: inline-flex;
+      border: 1px solid rgba(201,169,110,.25);
+      border-radius: 60px;
+      overflow: hidden;
+    }
+    .prog-item {
+      padding: 11px 26px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .92rem;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.65);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .prog-item + .prog-item { border-left: 1px solid rgba(201,169,110,.25); }
+    .prog-dot { color: var(--gold); font-size: .45rem; }
+
+    /* ── Scroll indicator ── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: .4;
+      animation: bounce 2s ease-in-out infinite;
+      z-index: 2;
+    }
+    .scroll-hint span {
+      font-size: .62rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .scroll-arrow {
+      width: 1px;
+      height: 28px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ═══════════════════════════════════════
+       DIVIDER ORNEMENTAL
+    ═══════════════════════════════════════ */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 32px;
+      background: var(--dark1);
+    }
+    .ornament-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,169,110,.3));
+    }
+    .ornament-line.rev {
+      background: linear-gradient(to left, transparent, rgba(201,169,110,.3));
+    }
+    .ornament svg { flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════
+       ADRESSES
+    ═══════════════════════════════════════ */
+    .loc-section {
+      background: var(--dark1);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+    .sec-label {
+      font-size: .7rem;
+      font-weight: 300;
+      letter-spacing: .48em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .sec-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: #fff;
+      margin-bottom: 14px;
+    }
+    .sec-sub {
+      font-weight: 300;
+      font-size: .9rem;
+      color: rgba(255,255,255,.4);
+      max-width: 480px;
+      margin: 0 auto 52px;
+      line-height: 1.75;
+    }
+    .loc-cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .loc-card {
+      background: var(--dark3);
+      border: 1px solid rgba(201,169,110,.18);
+      border-radius: 16px;
+      padding: 32px 28px;
+      flex: 1;
+      min-width: 260px;
+      max-width: 380px;
+      text-align: center;
+      transition: transform .3s, border-color .3s, box-shadow .3s;
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .loc-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .6s ease, transform .6s ease, border-color .3s, box-shadow .3s;
+    }
+    .loc-card:hover {
+      border-color: rgba(201,169,110,.45);
+      box-shadow: 0 12px 40px rgba(201,169,110,.12);
+      transform: translateY(-4px) !important;
+    }
+    .loc-ico {
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,110,.3);
+      background: rgba(201,169,110,.06);
+    }
+    .loc-ico svg { stroke: var(--gold); }
+    .loc-event {
+      font-size: .68rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 300;
+      margin-bottom: 6px;
+    }
+    .loc-when {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .08em;
+      margin-bottom: 14px;
+    }
+    .loc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .loc-addr {
+      font-size: .85rem;
+      color: rgba(255,255,255,.45);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .loc-maps {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(201,169,110,.3);
+      padding-bottom: 2px;
+      transition: border-color .2s, color .2s;
+    }
+    .loc-maps:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+    /* ═══════════════════════════════════════
+       GROUPS — fond noir, bulles blanches
+    ═══════════════════════════════════════ */
+    .groups-section {
+      background: var(--dark2);
+      padding: 72px 24px 88px;
+      text-align: center;
+    }
+    .bubbles {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .bubble {
+      background: transparent;
+      border: 1px solid rgba(201,169,110,.4);
+      border-radius: 14px;
+      padding: 28px 16px 22px;
+      cursor: pointer;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold-light);
+      letter-spacing: .06em;
+      transition: all .35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      min-width: 0;
+      outline: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .bubble::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(201,169,110,.18), rgba(201,169,110,.08));
+      opacity: 0;
+      transition: opacity .3s;
+      border-radius: inherit;
+    }
+    .bubble > * { position: relative; z-index: 1; }
+    .bubble:hover::after { opacity: 1; }
+    .bubble:hover {
+      color: #fff;
+      border-color: var(--gold);
+      box-shadow: 0 8px 36px rgba(201,169,110,.22);
+      transform: translateY(-4px);
+    }
+    .bubble:hover svg { stroke: #fff; }
+    .bubble svg { stroke: var(--gold); transition: stroke .3s; }
+    .bubble-label { font-size: .88rem; letter-spacing: .08em; line-height: 1.35; text-align: center; }
+    .bubble.reveal {
+      opacity: 0;
+      transform: translateY(24px) scale(.96);
+    }
+    .bubble.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    @media (max-width: 700px) {
+      .bubbles { flex-wrap: wrap; }
+      .bubble { min-width: calc(50% - 8px); flex: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       MODAL
+    ═══════════════════════════════════════ */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .overlay.open { display: flex; }
+    .modal {
+      background: var(--warm-white);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,.6);
+      animation: popIn .38s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(.82) translateY(24px); opacity: 0; }
+      to   { transform: scale(1)   translateY(0);    opacity: 1; }
+    }
+    .modal::-webkit-scrollbar { width: 5px; }
+    .modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    .m-head {
+      background: linear-gradient(150deg, #0a0a0a 0%, #1c1c1c 100%);
+      padding: 30px 28px 24px;
+      border-radius: 18px 18px 0 0;
+      text-align: center;
+      position: relative;
+    }
+    .m-close {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: rgba(255,255,255,.08);
+      border: none;
+      color: rgba(255,255,255,.5);
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .m-close:hover { background: rgba(255,255,255,.18); color: #fff; }
+    .m-ico { font-size: 2.4rem; margin-bottom: 10px; }
+    .m-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1.55rem; color: #fff; }
+    .m-subtitle { font-size: .75rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-light); margin-top: 4px; font-weight: 300; }
+    .m-body { padding: 28px 28px 32px; }
+
+    /* ═══════════════════════════════════════
+       FORM
+    ═══════════════════════════════════════ */
+    .f-section { margin-bottom: 26px; }
+    .f-sec-title {
+      font-family: 'Playfair Display', serif;
+      font-size: .95rem;
+      color: var(--gold);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 7px;
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .f-group { margin-bottom: 14px; }
+    label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 400;
+      color: var(--text-mid);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .req { color: var(--gold); }
+    input[type=text], input[type=number], textarea {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: 'Lato', sans-serif;
+      font-size: .92rem;
+      color: var(--text-dark);
+      background: #fff;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,.14);
+    }
+    textarea { resize: vertical; min-height: 78px; }
+
+    .toggle-wrap { display: flex; gap: 10px; }
+    .tog {
+      flex: 1;
+      padding: 10px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: .88rem;
+      color: var(--text-mid);
+      text-align: center;
+      transition: all .2s;
+      user-select: none;
+    }
+    .tog:hover { border-color: var(--gold); color: var(--gold); }
+    .tog.yes { background: #edf7ed; border-color: #66bb6a; color: #2e7d32; }
+    .tog.no  { background: #fdecea; border-color: #ef9a9a; color: #c62828; }
+
+    .radio-list { display: flex; flex-direction: column; gap: 10px; }
+    .r-opt {
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      transition: border-color .2s, background .2s;
+    }
+    .r-opt:has(input:checked) { border-color: var(--gold); background: var(--gold-pale); }
+    .r-opt input[type=radio] { width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0; }
+    .r-opt span { font-size: .92rem; color: var(--text-mid); }
+
+    .info-box {
+      background: linear-gradient(135deg, #faf5e8, #f5ebcf);
+      border: 1px solid var(--gold-light);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 13px 15px;
+      font-size: .88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+    .info-box strong { color: var(--text-dark); display: block; margin-bottom: 3px; }
+    .info-box a { color: var(--gold); text-decoration: none; font-size: .82rem; }
+    .info-box a:hover { text-decoration: underline; }
+
+    .child-row { display: flex; gap: 10px; margin-bottom: 8px; }
+    .child-row input { flex: 1; }
+    .btn-rm {
+      width: 34px; height: 34px; flex-shrink: 0;
+      border: 1.5px solid #ef9a9a; border-radius: 7px;
+      background: #fdecea; color: #c62828;
+      cursor: pointer; font-size: .9rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-add {
+      padding: 8px 16px;
+      border: 1.5px solid var(--gold); border-radius: 7px;
+      background: var(--gold-pale); color: var(--text-mid);
+      font-size: .82rem; cursor: pointer;
+      transition: background .2s; margin-top: 4px;
+    }
+    .btn-add:hover { background: var(--gold); color: #fff; }
+
+    .btn-submit {
+      width: 100%; padding: 15px;
+      background: linear-gradient(135deg, var(--gold), #9a6e2a);
+      color: #fff; border: none; border-radius: 9px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; letter-spacing: .1em;
+      cursor: pointer; margin-top: 6px; transition: all .3s;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #9a6e2a, #7a5020);
+      box-shadow: 0 8px 28px rgba(201,169,110,.45);
+      transform: translateY(-1px);
+    }
+
+    .success { text-align: center; padding: 44px 24px; }
+    .success-ico { font-size: 3.8rem; margin-bottom: 16px; }
+    .success h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 10px; }
+    .success p { font-size: .92rem; color: var(--text-mid); line-height: 1.75; }
+    .success-date { margin-top: 20px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--gold); }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--black);
+      text-align: center;
+      padding: 36px 20px;
+      border-top: 1px solid rgba(201,169,110,.12);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .9rem;
+      color: rgba(255,255,255,.3);
+      letter-spacing: .14em;
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 600px) {
+      .f-row { grid-template-columns: 1fr; }
+      .m-body { padding: 20px 18px 24px; }
+      .programme { flex-direction: column; border-radius: 12px; }
+      .prog-item + .prog-item { border-left: none; border-top: 1px solid rgba(201,169,110,.25); }
+      .bubble { min-width: 145px; padding: 16px 24px; }
+      .countdown { gap: 12px; }
+      .cd-num { font-size: 1.7rem; }
+      .loc-card { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+
+  <!-- Particules bokeh dorées -->
+  <div class="particles" aria-hidden="true">
+    <span class="p"></span><span class="p"></span><span class="p"></span>
+    <span class="p"></span><span class="p"></span><span class="p"></span>
+    <span class="p"></span><span class="p"></span><span class="p"></span>
+    <span class="p"></span>
+  </div>
+
+  <!-- Cercle décoratif -->
+  <div class="hero-ring" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <p class="hero-label">✦ &nbsp; Vous êtes invités &nbsp; ✦</p>
+
+    <h1 class="hero-names">
+      Charles
+      <span class="hero-amp">&amp;</span>
+      Camille
+    </h1>
+
+    <div class="hero-rule"></div>
+
+    <p class="hero-date">18 Juillet 2026</p>
+    <p class="hero-place">Auberives-en-Royans &nbsp;·&nbsp; Isère</p>
+
+    <!-- Compte à rebours -->
+    <div class="countdown" id="countdown">
+      <div class="cd-block"><span class="cd-num" id="cd-j">--</span><span class="cd-label">Jours</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><span class="cd-num" id="cd-h">--</span><span class="cd-label">Heures</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><span class="cd-num" id="cd-m">--</span><span class="cd-label">Minutes</span></div>
+      <div class="cd-sep">·</div>
+      <div class="cd-block"><span class="cd-num" id="cd-s">--</span><span class="cd-label">Secondes</span></div>
+    </div>
+
+    <nav class="programme" aria-label="Programme">
+      <div class="prog-item"><span class="prog-dot">◆</span> Cérémonie · 10h00</div>
+      <div class="prog-item"><span class="prog-dot">◆</span> Déjeuner · 12h00 – 16h00</div>
+    </nav>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Défiler</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+<!-- ═══════ DIVIDER ═══════ -->
+<div class="ornament" aria-hidden="true">
+  <div class="ornament-line rev"></div>
+  <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 2 L24 10 L20 18 L16 10 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+    <line x1="0" y1="10" x2="13" y2="10" stroke="#c9a96e" stroke-width=".8" opacity=".4"/>
+    <line x1="27" y1="10" x2="40" y2="10" stroke="#c9a96e" stroke-width=".8" opacity=".4"/>
+  </svg>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- ═══════ ADRESSES ═══════ -->
+<section class="loc-section">
+  <p class="sec-label">Programme du jour</p>
+  <h2 class="sec-title">Où nous retrouver</h2>
+  <p class="sec-sub">Toutes les adresses pour le grand jour.</p>
+
+  <div class="loc-cards">
+
+    <div class="loc-card reveal">
+      <div class="loc-ico">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 22 V11 L12 4 L21 11 V22"/>
+          <path d="M9 22 V15 a3 3 0 0 1 6 0 V22"/>
+          <line x1="12" y1="4" x2="12" y2="1"/>
+          <line x1="10.5" y1="2.5" x2="13.5" y2="2.5"/>
+          <rect x="5" y="13" width="3" height="3" rx=".5"/>
+          <rect x="16" y="13" width="3" height="3" rx=".5"/>
+        </svg>
+      </div>
+      <p class="loc-event">Cérémonie</p>
+      <p class="loc-when">Samedi 18 juillet · 10h00</p>
+      <p class="loc-name">Mairie d'Auberives-en-Royans</p>
+      <p class="loc-addr">Le Village<br>38680 Auberives-en-Royans</p>
+      <a class="loc-maps" href="https://maps.google.com/?q=Le+Village+38680+Auberives-en-Royans" target="_blank" rel="noopener">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Voir sur Maps
+      </a>
+    </div>
+
+    <div class="loc-card reveal">
+      <div class="loc-ico">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="2" x2="8" y2="22"/>
+          <path d="M5 2 V8 Q8 11 11 8 V2"/>
+          <path d="M16 2 C16 2 19 5 19 9 L16 10 V22"/>
+        </svg>
+      </div>
+      <p class="loc-event">Déjeuner de mariage</p>
+      <p class="loc-when">Samedi 18 juillet · 12h00 – 16h00</p>
+      <p class="loc-name">Brasserie Chavant</p>
+      <p class="loc-addr">72 avenue Léon et Joanny Tardy<br>38500 Voiron</p>
+      <a class="loc-maps" href="https://maps.google.com/?q=72+avenue+Leon+et+Joanny+Tardy+38500+Voiron" target="_blank" rel="noopener">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Voir sur Maps
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════ DIVIDER ═══════ -->
+<div class="ornament" aria-hidden="true">
+  <div class="ornament-line rev"></div>
+  <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 2 L24 10 L20 18 L16 10 Z" stroke="#c9a96e" stroke-width="1" fill="none"/>
+    <line x1="0" y1="10" x2="13" y2="10" stroke="#c9a96e" stroke-width=".8" opacity=".4"/>
+    <line x1="27" y1="10" x2="40" y2="10" stroke="#c9a96e" stroke-width=".8" opacity=".4"/>
+  </svg>
+  <div class="ornament-line"></div>
+</div>
+
+<!-- ═══════ GROUPES ═══════ -->
+<section class="groups-section">
+  <p class="sec-label">R.S.V.P</p>
+  <h2 class="sec-title">Votre invitation</h2>
+  <p class="sec-sub" style="color:rgba(255,255,255,.38)">Sélectionnez votre groupe pour confirmer votre présence.</p>
+
+  <div class="bubbles">
+
+    <!-- Famille de Charles -->
+    <button class="bubble reveal" onclick="openModal('famille-charles')">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 22v-2a5 5 0 0 1 5-5h3a5 5 0 0 1 5 5v2"/>
+        <circle cx="8.5" cy="7" r="3.5"/>
+        <path d="M17 11c1.5 0 3 .8 3 2.5C20 15 18 16.5 17 17"/>
+        <circle cx="17" cy="8" r="2.5"/>
+      </svg>
+      <span class="bubble-label">Famille<br>de Charles</span>
+    </button>
+
+    <!-- Famille de Camille -->
+    <button class="bubble reveal" onclick="openModal('famille-camille')">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="10" r="2.5"/>
+        <path d="M12 7.5 C12 7.5 12 4 9 3 C9 3 9 6 12 7.5Z"/>
+        <path d="M12 7.5 C12 7.5 15 4 16.5 5.5 C16.5 5.5 14 8 12 7.5Z"/>
+        <path d="M12 7.5 C12 7.5 15 10 14.5 12.5 C14.5 12.5 11.5 11 12 7.5Z"/>
+        <path d="M12 7.5 C12 7.5 9 10 9.5 12.5 C9.5 12.5 12.5 11 12 7.5Z"/>
+        <path d="M12 12.5 V20"/>
+        <path d="M9 17 C9 17 10.5 16 12 17 C13.5 18 15 17 15 17"/>
+      </svg>
+      <span class="bubble-label">Famille<br>de Camille</span>
+    </button>
+
+    <!-- Amis -->
+    <button class="bubble reveal" onclick="openModal('amis')">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8 3 C7 8 9 11 11 12 L11 20"/>
+        <path d="M16 3 C17 8 15 11 13 12 L13 20"/>
+        <line x1="9" y1="20" x2="15" y2="20"/>
+        <line x1="7" y1="23" x2="17" y2="23"/>
+        <path d="M7 7 Q8.5 8.5 12 7 Q15.5 5.5 17 7"/>
+        <circle cx="9.5" cy="5" r=".6" fill="currentColor" stroke="none"/>
+        <circle cx="12" cy="4" r=".6" fill="currentColor" stroke="none"/>
+        <circle cx="14.5" cy="5" r=".6" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="bubble-label">Amis</span>
+    </button>
+
+    <!-- Amis de Paris -->
+    <button class="bubble reveal" onclick="openModal('amis-paris')">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 L14.5 10 L17 22 H7 L9.5 10 Z"/>
+        <line x1="10.2" y1="8"  x2="13.8" y2="8"/>
+        <line x1="9"    y1="14" x2="15"   y2="14"/>
+        <line x1="8"    y1="19" x2="16"   y2="19"/>
+        <line x1="7"    y1="22" x2="17"   y2="22"/>
+        <line x1="11"   y1="10" x2="10.2" y2="14"/>
+        <line x1="13"   y1="10" x2="13.8" y2="14"/>
+      </svg>
+      <span class="bubble-label">Amis<br>de Paris</span>
+    </button>
+
+  </div>
+</section>
+
+<!-- ═══════ MODAL ═══════ -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="modal" id="modal"></div>
+</div>
+
+<footer>Charles &amp; Camille &nbsp;·&nbsp; 18 Juillet 2026 &nbsp;·&nbsp; Auberives-en-Royans</footer>
+
+<script>
+/* ── Apps Script URL ── */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUR-jIepRpQ2TGc97g3q6VE-Z1YixaT9Gmx87cW6-g_B0_aAf4uhmNvwbS1K_yFVB1PA/exec';
+
+/* ── Config groupes ── */
+const GROUPS = {
+  'famille-charles': { label: 'Famille de Charles', ico: '👨‍👩‍👧‍👦', friday: true,  paris: false },
+  'famille-camille': { label: 'Famille de Camille', ico: '👨‍👩‍👧‍👦', friday: false, paris: false },
+  'amis':            { label: 'Amis',                ico: '🥂',         friday: false, paris: false },
+  'amis-paris':      { label: 'Amis de Paris',       ico: '🗼',         friday: true,  paris: true  },
+};
+
+/* ── Compte à rebours ── */
+(function tick() {
+  const target = new Date('2026-07-18T10:00:00').getTime();
+  function update() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<p style="font-family:\'Cormorant Garamond\',serif;font-size:1.4rem;color:var(--gold);letter-spacing:.2em">C\'est aujourd\'hui !</p>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000)  /   60000);
+    const s = Math.floor((diff % 60000)    /    1000);
+    document.getElementById('cd-j').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+/* ── Scroll reveal ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── Modal ── */
+function openModal(group) {
+  document.getElementById('modal').innerHTML = buildForm(group, GROUPS[group]);
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function overlayClick(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+
+/* ── Constructeur de formulaire ── */
+function buildForm(group, g) {
+  return `
+  <div class="m-head">
+    <button class="m-close" onclick="closeModal()">✕</button>
+    <div class="m-ico">${g.ico}</div>
+    <div class="m-title">${g.label}</div>
+    <div class="m-subtitle">Formulaire de réponse</div>
+  </div>
+  <div class="m-body">
+    <form id="rsvp" onsubmit="submitForm(event,'${group}')">
+
+      <div class="f-section">
+        <div class="f-sec-title">✦ Coordonnées</div>
+        <div class="f-row">
+          <div class="f-group">
+            <label>Prénom <span class="req">*</span></label>
+            <input type="text" name="prenom" required placeholder="Votre prénom">
+          </div>
+          <div class="f-group">
+            <label>Nom <span class="req">*</span></label>
+            <input type="text" name="nom" required placeholder="Votre nom">
+          </div>
+        </div>
+      </div>
+
+      <div class="f-section">
+        <div class="f-sec-title">✦ Votre groupe</div>
+        <div class="f-row">
+          <div class="f-group">
+            <label>Nombre de personnes <span class="req">*</span></label>
+            <input type="number" name="nb_personnes" min="1" max="20" required placeholder="ex : 2" oninput="handleNbChange(this.value)">
+          </div>
+          <div class="f-group" id="nb-enfants-group" style="display:none">
+            <label>Nombre d'enfants</label>
+            <input type="number" name="nb_enfants" min="0" max="10" placeholder="0" oninput="handleEnfantsChange(this.value)">
+          </div>
+        </div>
+        <div class="f-group" id="enfants-ages-group" style="display:none">
+          <label>Âge(s) des enfants</label>
+          <div id="ages-container"></div>
+          <button type="button" class="btn-add" onclick="addChildAge()">+ Ajouter un enfant</button>
+        </div>
+      </div>
+
+      <div class="f-section">
+        <div class="f-sec-title">✦ Allergies / régime alimentaire</div>
+        <div class="f-group">
+          <label>Allergie(s) ou régime particulier</label>
+          <textarea name="allergie" placeholder="Précisez vos allergies ou restrictions alimentaires (ou laissez vide)"></textarea>
+        </div>
+      </div>
+
+      <div class="f-section">
+        <div class="f-sec-title">✦ Présence</div>
+        <div class="f-group">
+          <label>Cérémonie — 10h00 <span class="req">*</span></label>
+          <div class="toggle-wrap">
+            <div class="tog" onclick="setToggle('ceremonie','oui',this)">✓ Présent(e)</div>
+            <div class="tog" onclick="setToggle('ceremonie','non',this)">✗ Absent(e)</div>
+          </div>
+          <input type="hidden" name="ceremonie" id="v_ceremonie">
+        </div>
+        <div class="f-group">
+          <label>Déjeuner — 12h00 à 16h00 <span class="req">*</span></label>
+          <div class="toggle-wrap">
+            <div class="tog" onclick="setToggle('dejeuner','oui',this)">✓ Présent(e)</div>
+            <div class="tog" onclick="setToggle('dejeuner','non',this)">✗ Absent(e)</div>
+          </div>
+          <input type="hidden" name="dejeuner" id="v_dejeuner">
+        </div>
+      </div>
+
+      ${g.paris ? buildParisSection() : ''}
+      ${g.friday ? buildFridaySection() : ''}
+
+      <button type="submit" class="btn-submit">Envoyer ma réponse &nbsp;→</button>
+    </form>
+  </div>`;
+}
+
+function buildParisSection() {
+  return `
+  <div class="f-section">
+    <div class="f-sec-title">✦ Arrivée — Vendredi 17 Juillet</div>
+    <div class="f-group">
+      <label>Comment arriverez-vous ? <span class="req">*</span></label>
+      <div class="radio-list">
+        <label class="r-opt">
+          <input type="radio" name="transport" value="propres_moyens" required>
+          <span>🚗 Par mes propres moyens</span>
+        </label>
+        <label class="r-opt">
+          <input type="radio" name="transport" value="tgv_1823">
+          <span>🚄 Train TGV — Gare de Valence, arrivée <strong>18h23</strong></span>
+        </label>
+        <label class="r-opt">
+          <input type="radio" name="transport" value="tgv_1906">
+          <span>🚄 Train TGV — Gare de Valence, arrivée <strong>19h06</strong></span>
+        </label>
+      </div>
+    </div>
+  </div>`;
+}
+
+function buildFridaySection() {
+  return `
+  <div class="f-section">
+    <div class="f-sec-title">✦ Vendredi 17 Juillet — Soirée &amp; Nuit</div>
+
+    <div class="info-box">
+      <strong>🍽️ Dîner du vendredi soir</strong>
+      1020 chemin des Crêtes<br>38680 Auberives-en-Royans<br>
+      <a href="https://maps.google.com/?q=1020+chemin+des+Cretes+38680+Auberives-en-Royans" target="_blank" rel="noopener">Voir sur Maps →</a>
+    </div>
+
+    <div class="info-box">
+      <strong>🏡 Hébergement — Nuit du vendredi</strong>
+      31 Les Granges<br>38680 Rencurel<br>
+      <a href="https://maps.google.com/?q=31+Les+Granges+38680+Rencurel" target="_blank" rel="noopener">Voir sur Maps →</a>
+    </div>
+
+    <div class="f-group">
+      <label>Dîner du vendredi soir <span class="req">*</span></label>
+      <div class="toggle-wrap">
+        <div class="tog" onclick="setToggle('diner','oui',this)">✓ Présent(e)</div>
+        <div class="tog" onclick="setToggle('diner','non',this)">✗ Absent(e)</div>
+      </div>
+      <input type="hidden" name="diner" id="v_diner">
+    </div>
+    <div class="f-group">
+      <label>Allergie pour le dîner du vendredi</label>
+      <textarea name="allergie_vendredi" placeholder="Précisez si vous avez des allergies spécifiques pour ce repas (ou laissez vide)"></textarea>
+    </div>
+  </div>`;
+}
+
+/* ── Toggles ── */
+function setToggle(name, val, el) {
+  el.parentElement.querySelectorAll('.tog').forEach(t => t.classList.remove('yes','no'));
+  el.classList.add(val === 'oui' ? 'yes' : 'no');
+  document.getElementById('v_' + name).value = val;
+}
+
+/* ── Enfants ── */
+function handleNbChange(val) {
+  const el = document.getElementById('nb-enfants-group');
+  if (el) el.style.display = (val && +val >= 1) ? 'block' : 'none';
+}
+function handleEnfantsChange(val) {
+  const grp = document.getElementById('enfants-ages-group');
+  const container = document.getElementById('ages-container');
+  const nb = parseInt(val) || 0;
+  if (grp) grp.style.display = nb > 0 ? 'block' : 'none';
+  if (!container) return;
+  while (container.children.length < nb) {
+    const i = container.children.length + 1;
+    const row = document.createElement('div');
+    row.className = 'child-row';
+    row.innerHTML = `<input type="number" name="age_enfant_${i}" min="0" max="17" placeholder="Âge enfant ${i} (ans)">
+      <button type="button" class="btn-rm" onclick="this.parentElement.remove()">✕</button>`;
+    container.appendChild(row);
+  }
+  while (container.children.length > nb) container.removeChild(container.lastChild);
+}
+function addChildAge() {
+  const container = document.getElementById('ages-container');
+  const i = container.children.length + 1;
+  const row = document.createElement('div');
+  row.className = 'child-row';
+  row.innerHTML = `<input type="number" name="age_enfant_${i}" min="0" max="17" placeholder="Âge enfant ${i} (ans)">
+    <button type="button" class="btn-rm" onclick="this.parentElement.remove()">✕</button>`;
+  container.appendChild(row);
+  document.getElementById('enfants-ages-group').style.display = 'block';
+}
+
+/* ── Envoi ── */
+async function submitForm(e, group) {
+  e.preventDefault();
+  const g = GROUPS[group];
+
+  if (!document.getElementById('v_ceremonie').value)
+    return alert('Merci d\'indiquer votre présence à la cérémonie.');
+  if (!document.getElementById('v_dejeuner').value)
+    return alert('Merci d\'indiquer votre présence au déjeuner.');
+  if (g.friday && document.getElementById('v_diner') && !document.getElementById('v_diner').value)
+    return alert('Merci d\'indiquer votre présence au dîner du vendredi soir.');
+
+  const ages = Array.from(document.querySelectorAll('[name^="age_enfant_"]'))
+    .map(el => el.value).filter(v => v).join(', ');
+  const fd = new FormData(document.getElementById('rsvp'));
+
+  const data = {
+    groupe:            g.label,
+    prenom:            fd.get('prenom')           || '',
+    nom:               fd.get('nom')              || '',
+    nb_personnes:      fd.get('nb_personnes')     || '',
+    nb_enfants:        fd.get('nb_enfants')       || '',
+    ages_enfants:      ages,
+    allergie:          fd.get('allergie')         || '',
+    ceremonie:         document.getElementById('v_ceremonie').value,
+    dejeuner:          document.getElementById('v_dejeuner').value,
+    transport:         fd.get('transport')        || '',
+    diner:             document.getElementById('v_diner') ? document.getElementById('v_diner').value : '',
+    allergie_vendredi: fd.get('allergie_vendredi')|| '',
+  };
+
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Envoi en cours…';
+  btn.disabled = true;
+
+  try {
+    await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+    showSuccess(data.prenom);
+  } catch {
+    btn.textContent = 'Envoyer ma réponse →';
+    btn.disabled = false;
+    alert('Une erreur réseau est survenue. Vérifiez votre connexion et réessayez.');
+  }
+}
+
+function showSuccess(prenom) {
+  document.getElementById('modal').innerHTML = `
+    <div class="m-head" style="border-radius:18px 18px 0 0">
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-body">
+      <div class="success">
+        <div class="success-ico">💌</div>
+        <h3>Merci, ${escHtml(prenom)} !</h3>
+        <p>Votre réponse a bien été enregistrée.<br>Charles &amp; Camille vous remercient chaleureusement<br>et ont hâte de vous retrouver.</p>
+        <div class="success-date">18 Juillet 2026</div>
+      </div>
+    </div>`;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
